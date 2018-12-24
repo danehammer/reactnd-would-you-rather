@@ -6,6 +6,7 @@ import {handleInitialData} from '../actions/shared'
 import Dashboard from './Dashboard'
 import Nav from './Nav'
 import NewQuestion from './NewQuestion'
+import SignIn from './SignIn'
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,10 @@ class App extends Component {
   }
 
   render() {
+    if (!this.props.authedUser) {
+      return <SignIn/>
+    }
+
     return (
       <Router>
         <Fragment>
@@ -33,4 +38,10 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps({authedUser}) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App)
