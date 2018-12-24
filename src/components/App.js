@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import Nav from './Nav'
 import NewQuestion from './NewQuestion'
 import SignIn from './SignIn'
+import AuthedUser from './AuthedUser'
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
           <LoadingBar />
           <div className='container'>
             <Nav />
+            <AuthedUser />
             <div>
               <Route path='/' exact component={Dashboard}/>
               {/* TODO: <Route path='/questions/:id' component={QuestionPage}/> */}
