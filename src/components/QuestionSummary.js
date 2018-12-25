@@ -1,16 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-export class Question extends Component {
+export class QuestionSummary extends Component {
   render() {
     const {question} = this.props
     return (
-      <div>
+      <Link to={`/questions/${question.id}`}>
         <div>{question.id}</div>
         <div>{question.author}</div>
         <div>{question.optionOne.text}</div>
         <div>{question.optionTwo.text}</div>
-      </div>
+      </Link>
     )
   }
 }
@@ -21,4 +22,4 @@ function mapStateToProps({questions}, {id}) {
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default connect(mapStateToProps)(QuestionSummary)

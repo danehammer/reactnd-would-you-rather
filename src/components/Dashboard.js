@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Question from './Question'
+import QuestionSummary from './QuestionSummary'
 
 export class Dashboard extends Component {
 
@@ -42,9 +42,11 @@ export class Dashboard extends Component {
             if (hasAnswered === showAnswered) {
               return (
                 <li key={qid}>
-                  <Question id={qid}/>
+                  <QuestionSummary id={qid}/>
                 </li>
               )
+            } else {
+              return null
             }
           })}
         </ul>

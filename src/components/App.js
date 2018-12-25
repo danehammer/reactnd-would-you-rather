@@ -8,11 +8,10 @@ import Nav from './Nav'
 import NewQuestion from './NewQuestion'
 import SignIn from './SignIn'
 import AuthedUser from './AuthedUser'
+import QuestionPage from './QuestionPage'
 
 class App extends Component {
   componentDidMount() {
-    // TODO: protect this with them picking a user to auth as first,
-    // but that will need to be a component and used for every route
     this.props.dispatch(handleInitialData())
   }
 
@@ -30,7 +29,7 @@ class App extends Component {
             <AuthedUser />
             <div>
               <Route path='/' exact component={Dashboard}/>
-              {/* TODO: <Route path='/questions/:id' component={QuestionPage}/> */}
+              <Route path='/questions/:id' component={QuestionPage}/>
               <Route path='/new' component={NewQuestion}/>
             </div>
           </div>
