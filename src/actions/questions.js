@@ -1,8 +1,10 @@
 import {showLoading, hideLoading} from 'react-redux-loading'
-import {saveQuestion} from '../utils/api'
+import {saveQuestion, saveQuestionAnswer} from '../utils/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const ANSWER_QUESTION = 'ANSWER_QUESTION'
+export const REMOVE_ANSWER_QUESTION = 'REMOVE_ANSWER_QUESTION'
 
 export function receiveQuestions(questions) {
   return {
@@ -29,5 +31,38 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
     })
       .then((question) => dispatch(addQuestion(question)))
       .then(() => dispatch(hideLoading()))
+  }
+}
+
+function answerQuestion(authedUser, qid, answer) {
+  return {
+    type: ANSWER_QUESTION,
+    authedUser,
+    qid,
+    answer
+  }
+}
+
+function removeAnswerQuestion(authedUser, qid) {
+  return {
+    type: REMOVE_ANSWER_QUESTION,
+    authedUser,
+    qid
+  }
+}
+
+export function handleAnswerQuestion(qid, answer) {
+  return (dispatch, getState) => {
+    const {authedUser} = getState()
+    dispatch(answerQuestion(authedUser, qid, answer))
+    return saveQuestionAnswer({
+      authedUser,
+      qid,
+      answer
+    }).catch((e) => {
+      console.warn('Error in handleAnswerQuestion: ', e)
+      dispatch(removeAnswerQuestion(authedUser, qid))
+      alert('There was an error answering the question.')
+    })
   }
 }

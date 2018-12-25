@@ -1,20 +1,27 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {handleAnswerQuestion} from '../actions/questions';
 
 export class UnansweredQuestion extends Component {
 
   state = {
-    optionOne: null
+    option: null
+  }
+
+  handleChange = (e) => {
+    this.setState({option: e.target.id})
   }
 
   handleClick = (e) => {
     e.preventDefault()
-    this.props.onSubmit(e.target.id)
+    const answer = this.state.option
+    const {dispatch, qid} = this.props
+    dispatch(handleAnswerQuestion(qid, answer))
   }
 
   render() {
     const {question} = this.props
-    const {optionOne} = this.state
+    const {option} = this.state
 
     return (
       <form>
@@ -22,14 +29,16 @@ export class UnansweredQuestion extends Component {
           type='radio'
           id='optionOne'
           name='rather'
-          checked={optionOne}
+          checked={option === 'optionOne'}
+          onChange={this.handleChange}
         />
         <label>{question.optionOne.text}</label>
         <input
           type='radio'
           id='optionTwo'
           name='rather'
-          checked={!optionOne}
+          checked={option === 'optionTwo'}
+          onChange={this.handleChange}
         />
         <label>{question.optionTwo.text}</label>
         <button
