@@ -14,13 +14,14 @@ export default function questions(state = {}, action) {
       }
     case ANSWER_QUESTION:
       const question = state[action.qid]
+      const answer = question[action.answer]
       return {
         ...state,
         [action.qid]: {
           ...question,
           [action.answer]: {
-            ...question[action.answer],
-            votes: question[action.answer].votes.concat([action.authedUser])
+            ...answer,
+            votes: answer.votes ? answer.votes.concat([action.authedUser]) : [action.authedUser]
           }
         }
       }
