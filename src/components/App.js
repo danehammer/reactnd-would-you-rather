@@ -25,8 +25,10 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className='container'>
-            <Nav />
-            <AuthedUser />
+            <div className='top-bar'>
+              <Nav />
+              <AuthedUser />
+            </div>
             <div>
               <Route path='/' exact component={Dashboard}/>
               <Route path='/questions/:id' component={QuestionPage}/>

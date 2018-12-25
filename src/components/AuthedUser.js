@@ -10,15 +10,16 @@ export class AuthedUser extends Component {
   render() {
     const {authedUser} = this.props
     return (
-      <div>
+      <div className='authed-user'>
         <img
           src={authedUser.avatarURL}
           alt='user avatar'
         />
         <div>{`Hello, ${authedUser.name}`}</div>
-        <button
+        <div
+          className='sign-out'
           onClick={this.handleClick}
-        >Sign Out</button>
+        >Sign Out</div>
       </div>
     )
   }

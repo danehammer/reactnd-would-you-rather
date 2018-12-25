@@ -1,24 +1,41 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {timeDifference} from '../utils/helpers'
 
 export class QuestionSummary extends Component {
   render() {
-    const {question} = this.props
+    const {question, user, wasAskedByYou} = this.props
     return (
       <Link to={`/questions/${question.id}`}>
-        <div>{question.id}</div>
-        <div>{question.author}</div>
-        <div>{question.optionOne.text}</div>
-        <div>{question.optionTwo.text}</div>
+        <div className='question-summary'>
+          <img
+            src={user.avatarURL}
+            alt='asker avatar'
+          />
+          <div className='summary'>
+            <div className='timestamp'>
+              {timeDifference(Date.now(), question.timestamp)}
+            </div>
+            <div className='asked'>
+              {wasAskedByYou ? 'you' : question.author} asked...
+            </div>
+          </div>
+        </div>
       </Link>
     )
   }
 }
 
-function mapStateToProps({questions}, {id}) {
+function mapStateToProps({authedUser, users, questions}, {id}) {
+  const question = questions[id]
+  const user = users[question.author]
+  const wasAskedByYou = authedUser === question.author
   return {
-    question: questions[id]
+    id,
+    question,
+    user,
+    wasAskedByYou
   }
 }
 

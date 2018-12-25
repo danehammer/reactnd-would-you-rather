@@ -19,7 +19,7 @@ export class Dashboard extends Component {
 
     return (
       <div>
-        <h3>Dashboard</h3>
+        <h3>Would You Rather Questions</h3>
         <input
           type='radio'
           name='questions'
