@@ -83,7 +83,7 @@ ul {
   padding-left: 0;
 }
 
-li {
+.nav li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
@@ -177,4 +177,32 @@ a {
 
 .stats {
   text-align: right;
+}
+
+.leader-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.fake-img {
+  width: 48px;
+}
+
+.leader-row div {
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid whitesmoke;
+}
+
+.leader {
+  background-color: white;
+}
+
+.leader-header {
+  height: 32px;
+  padding-top: 16px;
+  font-weight: bold;
 }
