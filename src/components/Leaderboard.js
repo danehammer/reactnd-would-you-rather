@@ -12,7 +12,7 @@ export class Leaderboard extends Component {
           <div>Questions Answered</div>
         </li>
         {this.props.users.map((user) => (
-          <li className='leader-row'>
+          <li className='leader-row' key={user.id}>
             <div>
               <img src={user.avatarURL} alt='leader avatar'/>
             </div>
