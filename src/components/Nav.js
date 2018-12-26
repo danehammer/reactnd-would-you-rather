@@ -6,17 +6,17 @@ export default function Nav () {
     <nav className='nav'>
       <ul>
         <li>
-          <NavLink to='/' exact activeClassName='active'>
+          <NavLink to={`${process.env.PUBLIC_URL}/`} exact activeClassName='active'>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to='/new' activeClassName='active'>
+          <NavLink to={`${process.env.PUBLIC_URL}/new`} activeClassName='active'>
             New Question
           </NavLink>
         </li>
         <li>
-          <NavLink to='/leaderboard' activeClassName='active'>
+          <NavLink to={`${process.env.PUBLIC_URL}/leaderboard`} activeClassName='active'>
             Leaderboard
           </NavLink>
         </li>

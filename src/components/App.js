@@ -31,10 +31,10 @@ class App extends Component {
               <AuthedUser />
             </div>
             <Switch>
-              <Route exact path='/' component={Dashboard}/>
-              <Route exact path='/questions/:id' component={QuestionPage}/>
-              <Route exact path='/new' component={NewQuestion}/>
-              <Route exact path='/leaderboard' component={Leaderboard}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/questions/:id`} component={QuestionPage}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/new`} component={NewQuestion}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/leaderboard`} component={Leaderboard}/>
               <Route render={() => (
                 <div>
                   <h3>Sorry, that page doesn't exist</h3>

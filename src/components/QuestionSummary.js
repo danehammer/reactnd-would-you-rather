@@ -7,7 +7,7 @@ export class QuestionSummary extends Component {
   render() {
     const {question, user, wasAskedByYou} = this.props
     return (
-      <Link to={`/questions/${question.id}`}>
+      <Link to={`${process.env.PUBLIC_URL}/questions/${question.id}`}>
         <div className='question-summary'>
           <img
             src={user.avatarURL}
