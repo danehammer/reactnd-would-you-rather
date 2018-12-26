@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 import {handleInitialData} from '../actions/shared'
 import Dashboard from './Dashboard'
@@ -9,6 +9,7 @@ import NewQuestion from './NewQuestion'
 import SignIn from './SignIn'
 import AuthedUser from './AuthedUser'
 import QuestionPage from './QuestionPage'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -29,11 +30,17 @@ class App extends Component {
               <Nav />
               <AuthedUser />
             </div>
-            <div>
-              <Route path='/' exact component={Dashboard}/>
-              <Route path='/questions/:id' component={QuestionPage}/>
-              <Route path='/new' component={NewQuestion}/>
-            </div>
+            <Switch>
+              <Route exact path='/' component={Dashboard}/>
+              <Route exact path='/questions/:id' component={QuestionPage}/>
+              <Route exact path='/new' component={NewQuestion}/>
+              <Route exact path='/leaderboard' component={Leaderboard}/>
+              <Route render={() => (
+                <div>
+                  <h3>Sorry, that page doesn't exist</h3>
+                </div>
+              )}/>
+            </Switch>
           </div>
         </Fragment>
       </Router>

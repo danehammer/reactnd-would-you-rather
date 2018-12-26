@@ -20,6 +20,7 @@ export class NewQuestion extends Component {
     const {optionOne, optionTwo} = this.state
     this.props.dispatch(handleAddQuestion(optionOne, optionTwo))
     this.setState({optionOne: '', optionTwo: ''})
+    // TODO: go back to home after new question has been added
   }
 
   render() {
