@@ -6,15 +6,15 @@ import UnansweredQuestion from './UnansweredQuestion';
 export class QuestionPage extends Component {
 
   render() {
-    const {authedUser, question} = this.props
+    const {authedUser, question, questionUser, wasAskedByYou} = this.props
     const answer = authedUser.answers[question.id]
     return (
       <div>
         <h3>Would You Rather</h3>
         <div>
           <img
-            src={authedUser.avatarURL}
-            alt='user avatar'
+            src={questionUser.avatarURL}
+            alt='asker avatar'
           />
           Asked by <span>{authedUser.name}</span>
         </div>
@@ -31,10 +31,13 @@ export class QuestionPage extends Component {
 function mapStateToProps({authedUser, questions, users}, props) {
   const {id} = props.match.params
   const question = questions[id]
+  const wasAskedByYou = authedUser === question.author
 
   return {
     authedUser: users[authedUser],
-    question
+    question,
+    questionUser: users[question.author],
+    wasAskedByYou
   }
 }
 
