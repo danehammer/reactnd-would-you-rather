@@ -24,8 +24,17 @@ export default function users(state = {}, action) {
       // TODO
       return state
     case ADD_QUESTION:
-      // TODO:
-      return state
+      const asker = state[action.question.author]
+      const questions = state[asker.id].questions
+      return {
+        ...state,
+        [asker.id]: {
+          ...asker,
+          questions: questions
+            ? questions.concat([action.question.id])
+            : [action.question.id]
+        }
+      }
     default:
       return state
   }
