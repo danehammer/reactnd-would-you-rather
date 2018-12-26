@@ -11,21 +11,26 @@ export class AnsweredQuestion extends Component {
     const totalVotes = optionOneVotes + optionTwoVotes
     return (
       <div>
-        {answer === 'optionOne' &&
-          <div>Your answer</div>
-        }
-        <div>{question.optionOne.text}</div>
-        <div>
-          <span>{optionOneVotes} / {totalVotes}, </span>
-          <span>{(optionOneVotes / totalVotes * 100).toFixed(1)}%</span>
+        <div className='title'>Would You Rather</div>
+        <div className='answer'>
+          <div>
+            {question.optionOne.text}
+            {answer === 'optionOne' && <span className='answer-tag'> your answer</span>}
+          </div>
+          <div className='stats'>
+            <div className='user-count'>{optionOneVotes} out of {totalVotes} users</div>
+            <div className='percentage'>{(optionOneVotes / totalVotes * 100).toFixed(1)}%</div>
+          </div>
         </div>
-        {answer === 'optionTwo' &&
-          <div>Your answer</div>
-        }
-        <div>{question.optionTwo.text}</div>
-        <div>
-        <span>{optionTwoVotes} / {totalVotes}, </span>
-        <span>{(optionTwoVotes / totalVotes * 100).toFixed(1)}%</span>
+        <div className='answer'>
+          <div>
+            {question.optionTwo.text}
+            {answer === 'optionTwo' && <span className='answer-tag'> your answer</span>}
+          </div>
+          <div className='stats'>
+            <div className='user-count'>{optionTwoVotes} out of {totalVotes} users</div>
+            <div className='percentage'>{(optionTwoVotes / totalVotes * 100).toFixed(1)}%</div>
+          </div>
         </div>
       </div>
     )

@@ -24,24 +24,30 @@ export class UnansweredQuestion extends Component {
     const {option} = this.state
 
     return (
-      <form>
-        <input
-          type='radio'
-          id='optionOne'
-          name='rather'
-          checked={option === 'optionOne'}
-          onChange={this.handleChange}
-        />
-        <label>{question.optionOne.text}</label>
-        <input
-          type='radio'
-          id='optionTwo'
-          name='rather'
-          checked={option === 'optionTwo'}
-          onChange={this.handleChange}
-        />
-        <label>{question.optionTwo.text}</label>
+      <form className='unanswered'>
+        <div className='title'>Would You Rather</div>
+        <div className='option'>
+          <input
+            type='radio'
+            id='optionOne'
+            name='rather'
+            checked={option === 'optionOne'}
+            onChange={this.handleChange}
+          />
+          <label>{question.optionOne.text}</label>
+        </div>
+        <div className='option'>
+          <input
+            type='radio'
+            id='optionTwo'
+            name='rather'
+            checked={option === 'optionTwo'}
+            onChange={this.handleChange}
+          />
+          <label>{question.optionTwo.text}</label>
+        </div>
         <button
+          className='submit'
           onClick={this.handleClick}
         >Submit</button>
       </form>

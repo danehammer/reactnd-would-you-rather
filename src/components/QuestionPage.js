@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import AnsweredQuestion from './AnsweredQuestion';
-import UnansweredQuestion from './UnansweredQuestion';
+import AnsweredQuestion from './AnsweredQuestion'
+import UnansweredQuestion from './UnansweredQuestion'
+import {timeDifference} from '../utils/helpers'
 
 export class QuestionPage extends Component {
 
@@ -9,14 +10,20 @@ export class QuestionPage extends Component {
     const {authedUser, question, questionUser, wasAskedByYou} = this.props
     const answer = authedUser.answers[question.id]
     return (
-      <div>
-        <h3>Would You Rather</h3>
-        <div>
+      <div className='question-page'>
+        <div className='question-page-summary'>
           <img
             src={questionUser.avatarURL}
             alt='asker avatar'
           />
-          Asked by <span>{authedUser.name}</span>
+          <div className='summary'>
+            <div className='timestamp'>
+              {timeDifference(Date.now(), question.timestamp)}
+            </div>
+            <div className='asked'>
+              {wasAskedByYou ? 'you' : question.author} asked...
+            </div>
+          </div>
         </div>
         { answer ?
           <AnsweredQuestion qid={question.id}/>

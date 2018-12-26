@@ -27,7 +27,7 @@ img {
 
 .container {
   max-width: 800px;
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px 40px 40px;
   background-color: whitesmoke;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
@@ -131,4 +131,50 @@ a {
   border: none;
   font-size: large;
   box-shadow: 0 3px 6px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+}
+
+.question-page {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid darkred;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+}
+
+.question-page-summary {
+  display: flex;
+  flex-direction: row;
+}
+
+.question-page-summary img,
+.question-page-summary .summary,
+.unanswered {
+  margin: 8px;
+}
+
+.option {
+  margin-top: 10px;
+}
+
+.option input {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.answer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.answer-tag {
+  color: darkred;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.stats {
+  text-align: right;
 }
