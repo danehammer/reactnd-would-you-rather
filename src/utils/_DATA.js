@@ -173,6 +173,10 @@ export function _saveQuestion (question) {
 
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
+    if (Math.random() < 0.2) {
+      rej('save to "database" failed')
+      return
+    }
     setTimeout(() => {
       users = {
         ...users,
