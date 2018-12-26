@@ -50,7 +50,7 @@ img {
 }
 
 .sign-out {
-  margin-left: 10px;
+  margin-left: 20px;
   cursor:pointer;
   background-color: darkred;
   color: white;
@@ -60,6 +60,7 @@ img {
   padding: 4px;
   margin-top: -10px;
   padding-top: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }
 
 .nav ul {
@@ -100,4 +101,34 @@ li {
 a {
   text-decoration: none;
   color: black;
+}
+
+.new-question {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.title, .or {
+  font-size: large;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.new-question input {
+  width: 400px;
+  margin-top: 10px;
+  height: 30px;
+  font-size: large;
+}
+
+.submit {
+  margin-top: 20px;
+  width: 408px;
+  height: 40px;
+  background-color: darkred;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: large;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }

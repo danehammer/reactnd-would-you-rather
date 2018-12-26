@@ -26,19 +26,25 @@ export class NewQuestion extends Component {
     const {optionOne, optionTwo} = this.state
 
     return (
-      <div>
+      <div className='new-question'>
         <form>
+          <div className='title'>Would You Rather</div>
           <input
+            className='option'
             placeholder='Option 1'
             value={optionOne}
             onChange={(e) => this.handleChange(e, 'optionOne')}
           />
+          <div className='or'>or</div>
           <input
+            className='option'
             placeholder='Option 2'
             value={optionTwo}
             onChange={(e) => this.handleChange(e, 'optionTwo')}
           />
+          <br/>
           <button
+            className='submit'
             onClick={this.handleSubmit}
           >Submit</button>
         </form>
