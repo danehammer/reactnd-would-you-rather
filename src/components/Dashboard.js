@@ -36,7 +36,7 @@ export class Dashboard extends Component {
           onChange={this.handleChange}
         />
         <label>Answered</label>
-        <ul>
+        <ul className='dashboard'>
           {questionIds.map((qid) => {
             const hasAnswered = Object.keys(answers).includes(qid)
             if (hasAnswered === showAnswered) {
