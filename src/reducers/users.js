@@ -21,8 +21,19 @@ export default function users(state = {}, action) {
         }
       }
     case REMOVE_ANSWER_QUESTION:
-      // TODO
-      return state
+      const u = state[action.authedUser]
+      const retainedAnswerIds = Object.keys(u.answers).filter(qid => qid !== action.qid)
+      const retainedAnswers = retainedAnswerIds.reduce((obj, key) => {
+        obj[key] = u.answers[key]
+        return obj
+      }, {})
+      return {
+        ...state,
+        [u.id]: {
+          ...u,
+          answers: retainedAnswers
+        }
+      }
     case ADD_QUESTION:
       const asker = state[action.question.author]
       const questions = state[asker.id].questions

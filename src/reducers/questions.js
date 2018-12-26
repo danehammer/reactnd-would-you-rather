@@ -26,8 +26,18 @@ export default function questions(state = {}, action) {
         }
       }
     case REMOVE_ANSWER_QUESTION:
-      // TODO:
-      return state
+      const q = state[action.qid]
+      const a = q[action.answer]
+      return {
+        ...state,
+        [action.qid]: {
+          ...q,
+          [action.answer]: {
+            ...a,
+            votes: a.votes.filter(userId => userId !== action.authedUser)
+          }
+        }
+      }
     default:
       return state
   }

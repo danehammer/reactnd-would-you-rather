@@ -43,11 +43,12 @@ function answerQuestion(authedUser, qid, answer) {
   }
 }
 
-function removeAnswerQuestion(authedUser, qid) {
+function removeAnswerQuestion(authedUser, qid, answer) {
   return {
     type: REMOVE_ANSWER_QUESTION,
     authedUser,
-    qid
+    qid,
+    answer
   }
 }
 
@@ -61,7 +62,7 @@ export function handleAnswerQuestion(qid, answer) {
       answer
     }).catch((e) => {
       console.warn('Error in handleAnswerQuestion: ', e)
-      dispatch(removeAnswerQuestion(authedUser, qid))
+      dispatch(removeAnswerQuestion(authedUser, qid, answer))
       alert('There was an error answering the question.')
     })
   }
