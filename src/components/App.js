@@ -10,6 +10,7 @@ import SignIn from './SignIn'
 import AuthedUser from './AuthedUser'
 import QuestionPage from './QuestionPage'
 import Leaderboard from './Leaderboard'
+import NotFound from './NotFound'
 
 class App extends Component {
   componentDidMount() {
@@ -35,11 +36,7 @@ class App extends Component {
               <Route exact path={`${process.env.PUBLIC_URL}/questions/:id`} component={QuestionPage}/>
               <Route exact path={`${process.env.PUBLIC_URL}/add`} component={NewQuestion}/>
               <Route exact path={`${process.env.PUBLIC_URL}/leaderboard`} component={Leaderboard}/>
-              <Route render={() => (
-                <div>
-                  <h3>Sorry, that page doesn't exist</h3>
-                </div>
-              )}/>
+              <Route component={NotFound}/>
             </Switch>
           </div>
         </Fragment>

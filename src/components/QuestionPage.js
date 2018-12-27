@@ -3,11 +3,19 @@ import {connect} from 'react-redux'
 import AnsweredQuestion from './AnsweredQuestion'
 import UnansweredQuestion from './UnansweredQuestion'
 import {timeDifference} from '../utils/helpers'
+import NotFound from './NotFound'
 
 export class QuestionPage extends Component {
 
   render() {
     const {authedUser, question, questionUser, wasAskedByYou} = this.props
+
+    // The router will match /questions/1234 where 1234 is not a real question
+    // id, in that case, show our 404 component
+    if (!question) {
+      return <NotFound/>
+    }
+
     const answer = authedUser.answers[question.id]
     return (
       <div className='question-page'>
@@ -38,12 +46,12 @@ export class QuestionPage extends Component {
 function mapStateToProps({authedUser, questions, users}, props) {
   const {id} = props.match.params
   const question = questions[id]
-  const wasAskedByYou = authedUser === question.author
+  const wasAskedByYou = question ? authedUser === question.author : false
 
   return {
     authedUser: users[authedUser],
     question,
-    questionUser: users[question.author],
+    questionUser: question ? users[question.author] : null,
     wasAskedByYou
   }
 }
