@@ -33,7 +33,7 @@ class App extends Component {
             <Switch>
               <Route exact path={`${process.env.PUBLIC_URL}/`} component={Dashboard}/>
               <Route exact path={`${process.env.PUBLIC_URL}/questions/:id`} component={QuestionPage}/>
-              <Route exact path={`${process.env.PUBLIC_URL}/new`} component={NewQuestion}/>
+              <Route exact path={`${process.env.PUBLIC_URL}/add`} component={NewQuestion}/>
               <Route exact path={`${process.env.PUBLIC_URL}/leaderboard`} component={Leaderboard}/>
               <Route render={() => (
                 <div>

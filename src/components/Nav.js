@@ -11,7 +11,7 @@ export default function Nav () {
           </NavLink>
         </li>
         <li>
-          <NavLink to={`${process.env.PUBLIC_URL}/new`} activeClassName='active'>
+          <NavLink to={`${process.env.PUBLIC_URL}/add`} activeClassName='active'>
             New Question
           </NavLink>
         </li>
